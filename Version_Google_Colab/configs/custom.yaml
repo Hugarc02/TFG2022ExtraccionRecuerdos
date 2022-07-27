@@ -1,0 +1,27 @@
+%YAML 1.2
+---
+# Summarizes a text by extracting the most relevant sentences.
+transformers:
+    - pos_extract 
+    - unique
+    - keep_deps
+    - nouns
+    - adjectives
+    - adverbs
+    - numerals
+    - attr_class
+
+transformer_args:
+    lang: es
+    unknown_dep_translate: KEEP
+    dep_translate: 
+        dobj: THEME
+        iobj: ARG
+        nsubj: AGENT
+        obj: OBJ
+        nmod: CONTEXT
+        nummod: NUMBER
+        csubj: OBJ
+        conj: UNION
+linearizers:
+    - cypher_merge
