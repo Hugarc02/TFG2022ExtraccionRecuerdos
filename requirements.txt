@@ -3,10 +3,5 @@ pyyaml==6.0
 networkx==2.6.3
 neo4j==4.4.2
 pydub==0.25.1
---upgrade google-cloud-speech
-
-spacy download es_core_news_lg
-spacy download es_dep_news_trf
-nltk.downloader wordnet_ic
-nltk.downloader omw
-nltk.downloader wordnet
+pysimplegui==4.59.0
+moviepy==1.0.3

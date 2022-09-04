@@ -15,11 +15,20 @@ https://github.com/Hugarc02/grafeno-TFG-2022
 
 ## Instrucciones de instalación
 
-1. Instalar las librerias y complementos definidos en **requirements.txt**. ```pip install requirements.txt```
+1. Instalar las librerias definidas en **requirements.txt**. ```pip install requirements.txt```
 
-2. Descargar repositiorio completo en un directorio.
+2. Instalar complementos necesarios usando los siguientes comandos.
 
-3. Ejecutar **main.py** desde ese directorio. ```python main.py```
+```pip install --upgrade google-cloud-speech```
+```python -m spacy download es_core_news_lg```
+```python -m spacy download es_dep_news_trf```
+```python -m nltk.downloader wordnet_ic```
+```python -m nltk.downloader omw-1.4```
+```python -m nltk.downloader wordnet```
+
+3. Descargar repositiorio completo en un directorio.
+
+4. Ejecutar **main.py** desde ese directorio. ```python main.py```
 
 ## Google Cloud Speech-to-text API
 
