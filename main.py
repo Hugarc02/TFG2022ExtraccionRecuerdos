@@ -25,15 +25,16 @@ tab2 = [
     [sg.Button('Subir transcripción', key='-MTRANS-')]
 ]
 col1 = sg.Column([[sg.TabGroup([[sg.Tab('Transcripción Automática', tab1), 
-                                 sg.Tab('Manual', tab2, key = '-TAB1-')]])],
+                                 sg.Tab('Transcripción Manual', tab2, key = '-TAB1-')]])],
                   [sg.Text('Seleccionar guión: ')], 
                   [sg.Input(key='-SCRIPT-'), sg.FileBrowse(key='-SCRIPT-')],
                   [sg.Text('Usuario Neo4j: ', size=(15,1)), sg.Text('Contraseña Neo4j: ', size=(15,1)), sg.Text('Puerto Neo4j: ', size=(15,1))], 
                   [sg.Input(key='-USER-', size=(17,1)), sg.Input(key='-PWD-', size=(17,1)), sg.Input(key='-PORT-', size=(16,1)),],
                   [sg.Button('Extraer Grafos', key='-EXTRACT-', disabled=True)],
                  ])
-col2 = sg.Column([[sg.Frame(
-    'Output:',[[sg.Multiline(key='-OUTPUT-', size=(60,22))]
+col2 = sg.Column([[sg.Frame('Output:',[
+    [sg.Multiline(key='-OUTPUT-', size=(60,22))],
+    [sg.Column([[sg.Button('Actualizar Texto', key='-UPD-', disabled = True)]], element_justification='right', expand_x=True)]
 ],)]])
 
 col3 = sg.Column([[sg.Frame('Opciones de salida:',[
@@ -63,6 +64,7 @@ while True:
             window['-OUTPUT-'].update(values['-INSERT-'])
             transcription = values['-INSERT-'].splitlines()
             window['-STATUS-'].update('TRANSCRIPCION LISTA', text_color='#0c7a02')
+            window['-UPD-'].update(disabled=False)
             window['-EXTRACT-'].update(disabled=False)
         # Automatic transcription
         elif event == '-ATRANS-':
@@ -76,12 +78,19 @@ while True:
             transcription = values[event]
             window['-STATUS-'].update('TRANSCRIPCION LISTA', text_color='#0c7a02')
             window['-EXTRACT-'].update(disabled=False)
+            window['-UPD-'].update(disabled=False)
+            window['-OUTPUT-'].update('')
             for t in transcription:
                 window['-OUTPUT-'].print(t + '\n')
+        # Transcription updated
+        elif event == '-UPD-':
+            transcription = values['-OUTPUT-'].splitlines()
+            window['-STATUS-'].update('TRANSCRIPCION ACTUALIZADA', text_color='#0c7a02')
         # Graph extraction
         elif event == '-EXTRACT-':
             ga.errorsGraphGeneration(values['-SCRIPT-'])
             window['-STATUS-'].update('GENERANDO GRAFOS', text_color='#a88532')
+            window['-UPD-'].update(disabled=True)
             window['-ATRANS-'].update(disabled=True)
             window['-MTRANS-'].update(disabled=True)
             window.perform_long_operation(lambda : extractGraphs(transcription, values['-SCRIPT-']), '-END GRAPHS-')
@@ -92,7 +101,7 @@ while True:
             window['-MTRANS-'].update(disabled=False)
             window['-OUTPUT-'].update('')
             if values['-SEGMENTS-'] or values['-QUERIES-']:
-                for i in range(len(results[0])):
+                for i in range(len(results[1])):
                     window['-OUTPUT-'].print('Pregunta ' + str(i+1) + '\n', font='bold')
                     if values['-SEGMENTS-']: window['-OUTPUT-'].print('Segmento:  \n' + results[1][i] + '\n', text_color = '#082567')
                     if values['-QUERIES-']: window['-OUTPUT-'].print('Consulta:  \n' + results[0][i] + '\n', text_color = '#01826B')
@@ -100,7 +109,7 @@ while True:
                 ga.errorNeo4j(values['-USER-'], values['-PWD-'], values['-PORT-'])
                 submitQueries(results[0], values['-PORT-'], values['-USER-'], values['-PWD-'])
         elif event == '-HELP-':
-            sg.popup(ga.ayuda, title='Ayuda', )
+            sg.popup(ga.ayuda, title='Ayuda', background_color = 'white' )
     # error handling
     except google.api_core.exceptions.NotFound:
         window['-STATUS-'].update('ERROR', text_color='#990f0b')

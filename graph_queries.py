@@ -20,7 +20,7 @@ def extractGraphs(lines, scriptPath):
         maxI = -1
         for i in range(len(lines)):
             if matches[i] == -1:
-                s = similar(questions[j], lines[i][2:])
+                s = similar(questions[j], lines[i])
                 if s > maxS and s > 0.7:
                     maxS = s
                     maxI = i
@@ -40,13 +40,13 @@ def extractGraphs(lines, scriptPath):
                 queries.append(process(segment, qNum, script[questions[qNum]]))
                 #print(segment + '\n\n')
                 qNum = matches[i]
-                segment = lines[i][2:]
+                segment = lines[i]
             else:
-                segment = segment + '\n' + lines[i][2:]
+                segment = segment + '\n' + lines[i]
 
         elif matches[i] != -1:
             qNum = matches[i]
-            segment = lines[i][2:]
+            segment = lines[i].replace('¿', '').replace('?', '.')
         i += 1
     segments.append(segment)
     queries.append(process(segment, j, script[questions[j]]))
@@ -59,6 +59,7 @@ def submitQueries(queries, port, user, pwd):
     session = data_base_connection.session()   
     for qs in queries:
         for q in qs.splitlines():
-            session.run(q)
-        
+            if q != '':
+                session.run(q)
     session.run('match ()-[r]->() match (s)-[r]->(e) with s,e,type(r) as typ, tail(collect(r)) as coll foreach(x in coll | delete x);')
+    data_base_connection.close()
