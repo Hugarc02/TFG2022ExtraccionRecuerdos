@@ -6,6 +6,9 @@ transformers:
     - unique
     - keep_deps
     - nouns
+    - determinants
+    - pronouns_es
+    - omitted_subject
     - adjectives
     - adverbs
     - numerals
@@ -20,6 +23,8 @@ transformer_args:
         nsubj: AGENT
         obj: OBJ
         nmod: CONTEXT
+        advcl: CONTEXT
+        obl: CONTEXT
         nummod: NUMBER
         csubj: OBJ
         conj: UNION
