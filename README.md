@@ -41,11 +41,13 @@ Para usar la **transcripción automática**, es necesario habilitar la transcrip
 * Crear y descargar clave JSON de la cuenta de servicio
 * Crear bucket de almacenamiento en Google Cloud Storage
 
-En el sistema habrá que seleccionar las ruta al JSON de la clave de cuenta de servicio, y insertar el nombre del bucked de Google Cloud Storage.
+En el sistema habrá que seleccionar las ruta al JSON de la clave de cuenta de servicio, y insertar el nombre del bucket de Google Cloud Storage.
 
 ## Base de datos Neo4j
 
 Para almacenar el resultado en una base de datos Neo4j, es necesario tener una base de datos de Neo4j desktop o Neo4j sandbox activa. En el sistema habra que insertar la uri de la base de datos, el usuario y la contraseña.
+
+Ejemplos de formato de uri: ```bolt://localhost:XXXX```, ```bolt://XX.XXX.XX.XXX:XXXX``` 
 
 ## Version Google Colab
 
