@@ -1,6 +1,6 @@
 # TFG 2021-2022 Extracción de recuerdos de videos
 
-En este repositorio se encuentra el código del Trabajo de Fin de Grado **Extracción de recuerdos de videos** de la Universidad Complutense de Madrid, realizado por Hugo García González y dirigido por Alberto Díaz Esteban y Antonio F. G. Sevilla.
+En este repositorio se encuentra el código del Trabajo de Fin de Grado **Extracción de recuerdos de videos** de la Universidad Complutense de Madrid, realizado por Hugo García González y dirigido por Alberto Díaz Esteban.
 
 Los archivos principales **main.py**, **graph_queries.py**, **graph_queries_aux.py**, **transcribe.py** y **gui_aux.py** son el código fuente del sistema creado en este trabajo.
 
@@ -10,7 +10,7 @@ El directorio **Archivos_Ejemplo** contiene un ejemplo de archivo de guión de e
 
 El directorio **Configs** contiene la configuración de la libreria Grafeno.
 
-Los directorios **Grafeno** y **Version_Google_Colab/Grafeno** contienen una versión modificada de la librería de python Grafeno. Para consultar el fork de la versión modicada acceda al siguiente repositiorio: 
+Los directorios **Grafeno** y **Version_Google_Colab/Grafeno** contienen una versión modificada de la librería de python Grafeno creada por Antonio F. G. Sevilla. Para consultar el fork de la versión modicada acceda al siguiente repositiorio: 
 https://github.com/Hugarc02/grafeno-TFG-2022
 
 ## Instrucciones de instalación
