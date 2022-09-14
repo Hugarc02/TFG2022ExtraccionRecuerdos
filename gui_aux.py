@@ -42,4 +42,6 @@ Formatos de audio aceptados: ogg, mp3, wav, p4a
 Clave de cuenta de servicio: debe tener permisos en Google Cloud Storage
 
 Nombre bucket: Nombre del bucket de Google Cloud Storage 
+
+Para más información acceder a https://github.com/Hugarc02/TFG2022ExtraccionRecuerdos
 '''

@@ -1,0 +1,15 @@
+{
+  "seccionEntrevista": "Infancia",
+  "preguntas": {
+    "¿Cuándo naciste" : 1,
+    "¿Dónde naciste?" : 0,
+    "¿De dónde son tus padres?" : 0,
+    "¿Tienes algún hermano?" : 0,
+    "¿Que relación tenías con tu hermano?" : 0,
+    "¿Qué te gustaba cuando eras niño?" : 0,
+    "¿Cómo eran tus vacaciones?" : 0,
+    "¿Qué tal el colegio?": 0,
+    "¿Cual era tu asignatura favorita del colegio?" : 0
+  }
+}
+

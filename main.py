@@ -28,7 +28,7 @@ col1 = sg.Column([[sg.TabGroup([[sg.Tab('Transcripción Automática', tab1),
                                  sg.Tab('Transcripción Manual', tab2, key = '-TAB1-')]])],
                   [sg.Text('Seleccionar guión: ')], 
                   [sg.Input(key='-SCRIPT-'), sg.FileBrowse(key='-SCRIPT-')],
-                  [sg.Text('Usuario Neo4j: ', size=(15,1)), sg.Text('Contraseña Neo4j: ', size=(15,1)), sg.Text('Puerto Neo4j: ', size=(15,1))], 
+                  [sg.Text('Usuario Neo4j: ', size=(15,1)), sg.Text('Contraseña Neo4j: ', size=(15,1)), sg.Text('URI Neo4j: ', size=(15,1))], 
                   [sg.Input(key='-USER-', size=(17,1)), sg.Input(key='-PWD-', size=(17,1)), sg.Input(key='-PORT-', size=(16,1)),],
                   [sg.Button('Extraer Grafos', key='-EXTRACT-', disabled=True)],
                  ])
@@ -38,9 +38,9 @@ col2 = sg.Column([[sg.Frame('Output:',[
 ],)]])
 
 col3 = sg.Column([[sg.Frame('Opciones de salida:',[
-    [ sg.Checkbox('Subir a neo4j', default=True, key='-NEO4J-', size=(9,1)),
-     sg.Checkbox('Mostrar segmentos', key='-SEGMENTS-',  size=(13,1)),
-    sg.Checkbox('Mostrar consultas', key='-QUERIES-',  size=(13,1))]
+    [ sg.Checkbox('Subir a neo4j', key='-NEO4J-', size=(9,1)),
+     sg.Checkbox('Mostrar segmentos', default=True, key='-SEGMENTS-',  size=(13,1)),
+    sg.Checkbox('Mostrar consultas', default=True, key='-QUERIES-',  size=(13,1))]
 ],)]])
 
 col4 = sg.Column([[sg.Frame('Estatus del sistema:', [
@@ -109,7 +109,7 @@ while True:
                 ga.errorNeo4j(values['-USER-'], values['-PWD-'], values['-PORT-'])
                 submitQueries(results[0], values['-PORT-'], values['-USER-'], values['-PWD-'])
         elif event == '-HELP-':
-            sg.popup(ga.ayuda, title='Ayuda', background_color = 'white' )
+            sg.popup_scrolled(ga.ayuda, title='Ayuda', background_color = 'white' )
     # error handling
     except google.api_core.exceptions.NotFound:
         window['-STATUS-'].update('ERROR', text_color='#990f0b')

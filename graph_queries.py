@@ -55,7 +55,7 @@ def extractGraphs(lines, scriptPath):
 
 def submitQueries(queries, port, user, pwd):
     #uri = "bolt://localhost:7687", auth=("neo4j", "password"
-    data_base_connection = GraphDatabase.driver(uri = "bolt://localhost:" + str(port), auth=(user, pwd))
+    data_base_connection = GraphDatabase.driver(uri = str(port), auth=(user, pwd))
     session = data_base_connection.session()   
     for qs in queries:
         for q in qs.splitlines():
