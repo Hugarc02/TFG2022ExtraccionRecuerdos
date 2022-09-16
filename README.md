@@ -15,7 +15,7 @@ https://github.com/Hugarc02/grafeno-TFG-2022
 
 ## Instrucciones de instalación
 
-1. Instalar las librerias definidas en **requirements.txt**. ```pip install requirements.txt```
+1. Instalar las librerias definidas en **requirements.txt**. ```pip install -r requirements.txt```
 
 2. Instalar complementos necesarios usando los siguientes comandos.
 
