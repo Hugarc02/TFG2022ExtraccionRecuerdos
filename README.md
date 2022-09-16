@@ -20,11 +20,19 @@ https://github.com/Hugarc02/grafeno-TFG-2022
 2. Instalar complementos necesarios usando los siguientes comandos.
 
 ```pip install --upgrade google-cloud-speech```
+
+```pip install --upgrade google-cloud-storage```
+
 ```python -m spacy download es_core_news_lg```
+
 ```python -m spacy download es_dep_news_trf```
+
 ```python -m nltk.downloader wordnet_ic```
+
 ```python -m nltk.downloader omw-1.4```
+
 ```python -m nltk.downloader wordnet```
+
 
 3. Descargar repositiorio completo en un directorio.
 

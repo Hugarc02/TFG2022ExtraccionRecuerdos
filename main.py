@@ -14,7 +14,7 @@ tab1 = [
     [sg.Text('Seleccionar clave cuenta de servicio: ')],
     [sg.Input(key='-KEY-', tooltip = 'JSON'), sg.FileBrowse(key='-KEYB-')],
     [sg.Text('Insertar bucket de Google Cloud Storage: ')],
-    [sg.Input('bucket-tfg-2021-2022', key='-BUCKET-')],
+    [sg.Input(key='-BUCKET-')],
     [sg.Button('Obtener transcripción', key='-ATRANS-')],
 ]
 
